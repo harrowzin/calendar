@@ -1,0 +1,179 @@
+/* Base transparente até a raiz */
+html, body {
+  background: transparent !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Be Vietnam Pro", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;  /* centraliza na tela */
+  line-height: 1;
+  /* sem cor de fundo aqui */
+}
+
+/* Container do calendário (sem padding externo para não criar “margem” ao redor) */
+.flip-calendar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0;          /* << removemos o padding que criava borda ao redor */
+  gap: 0;              /* gap fora não é necessário */
+}
+
+/* Bloco preto arredondado (o que deve aparecer sobre o fundo transparente) */
+.flip-calendar-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;       /* espaço interno do bloco preto */
+  gap: 25px;
+  width: 100%;
+  background: #262729; /* preto/cinza escuro do exemplo */
+  border-radius: 55px;
+}
+
+/* Linhas */
+.flip-calendar-row1,
+.flip-calendar-row2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 25px;
+}
+
+/* Cartões do dia (cinza claro com dígito) */
+.flip-calendar-cardday {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  padding: 15px;
+  gap: 10px;
+  background: #e6e7eb;
+  border-radius: 55px;
+  color: #262729;
+  font-weight: 600;
+  font-size: 20vw;   /* será ajustado nos breakpoints */
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+.flip-calendar-text { line-height: 1; }
+
+/* Cartões de mês/dia-da-semana */
+.flip-calendar-card2 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: 15px;
+  gap: 10px;
+  background: #e6e7eb;
+  border-radius: 55px;
+  font-weight: 600;
+  font-size: 5vw;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+.flip-calendar-text-month {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  color: #262729;
+  line-height: 1;
+}
+
+/* Detalhes de “dobradiça” */
+.flip-calendar-detailwrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0 10px;
+  width: 100%;
+}
+.flip-calendar-detaildiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.flip-calendar-topelement {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 50%;
+  min-height: 1rem;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, #000 100%), #333338;
+  border: 1px solid #000;
+  border-radius: 8px 8px 0 0;
+}
+.flip-calendar-bottomelement {
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  width: 70%;
+  min-height: 1.5rem;
+  background: #e6e7eb;
+  border-top: 0.5px solid #767375;
+  box-shadow: inset 0 4px 4px rgba(0,0,0,0.25),
+              inset 50px 60px 107.4px -116px rgba(0,0,0,0.4);
+  border-radius: 22px;
+}
+
+/* ====== BREAKPOINTS ====== */
+
+/* Desktops grandes */
+@media (min-width: 1200px) {
+  .flip-calendar-wrapper,
+  .flip-calendar-cardday,
+  .flip-calendar-card2 { border-radius: 55px; }
+
+  .flip-calendar-text { font-size: 15vw; }
+  .flip-calendar-text-month { font-size: 5vw; }
+}
+
+/* Laptops */
+@media (min-width: 992px) and (max-width: 1396px) {
+  .flip-calendar-wrapper,
+  .flip-calendar-cardday,
+  .flip-calendar-card2 { border-radius: 35px; }
+
+  .flip-calendar-text { font-size: 30vw; }
+  .flip-calendar-text-month { font-size: 8vw; }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 991px) {
+  .flip-calendar-wrapper {
+    padding: 20px;
+    gap: 15px;
+    border-radius: 55px;
+  }
+  .flip-calendar-row1, .flip-calendar-row2 { gap: 15px; }
+  .flip-calendar-text { font-size: 30vw; }
+  .flip-calendar-text-month { font-size: 8vw; }
+}
+
+/* Mobile */
+@media (max-width: 390px) {
+  .flip-calendar-cardday,
+  .flip-calendar-card2 { border-radius: 35px; }
+
+  .flip-calendar-row1, .flip-calendar-row2 { gap: 10px; }
+  .flip-calendar-text { font-size: 30vw; }
+  .flip-calendar-text-month { font-size: 8vw; }
+}
