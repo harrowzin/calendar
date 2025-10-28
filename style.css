@@ -1,42 +1,42 @@
-/* Base transparente até a raiz */
+/* ===== Base transparente e sem rolagem ===== */
 html, body {
-  background: transparent !important;
+  background: transparent !important; /* fundo totalmente transparente */
+  height: 100dvh;                     /* usa altura real da viewport (mobile-friendly) */
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden !important;        /* remove rolagem */
+  overscroll-behavior: none;          /* sem bounce no mobile */
 }
 
 body {
-  margin: 0;
-  padding: 0;
   font-family: "Be Vietnam Pro", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;  /* centraliza na tela */
   line-height: 1;
-  /* sem cor de fundo aqui */
 }
 
-/* Container do calendário (sem padding externo para não criar “margem” ao redor) */
+/* ===== Calendário (apenas ele visível) ===== */
 .flip-calendar {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
   max-width: 800px;
-  margin: 0 auto;
-  padding: 0;          /* << removemos o padding que criava borda ao redor */
-  gap: 0;              /* gap fora não é necessário */
+  width: 100%;
+  margin: 0;
+  padding: 0; /* sem borda externa */
 }
 
-/* Bloco preto arredondado (o que deve aparecer sobre o fundo transparente) */
 .flip-calendar-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;       /* espaço interno do bloco preto */
   gap: 25px;
   width: 100%;
-  background: #262729; /* preto/cinza escuro do exemplo */
+  padding: 20px;             /* espaço interno do bloco preto */
+  background: #262729;       /* bloco escuro visível */
   border-radius: 55px;
 }
 
@@ -50,7 +50,7 @@ body {
   gap: 25px;
 }
 
-/* Cartões do dia (cinza claro com dígito) */
+/* Cartões dos dias (números grandes) */
 .flip-calendar-cardday {
   flex: 1;
   display: flex;
@@ -64,14 +64,14 @@ body {
   border-radius: 55px;
   color: #262729;
   font-weight: 600;
-  font-size: 20vw;   /* será ajustado nos breakpoints */
+  font-size: 20vw;
   line-height: 1;
   box-sizing: border-box;
 }
 
 .flip-calendar-text { line-height: 1; }
 
-/* Cartões de mês/dia-da-semana */
+/* Cartões de mês/dia da semana */
 .flip-calendar-card2 {
   flex: 1;
   display: flex;
@@ -97,7 +97,7 @@ body {
   line-height: 1;
 }
 
-/* Detalhes de “dobradiça” */
+/* Detalhes das “dobradiças” */
 .flip-calendar-detailwrapper {
   display: flex;
   justify-content: center;
@@ -134,8 +134,7 @@ body {
   border-radius: 22px;
 }
 
-/* ====== BREAKPOINTS ====== */
-
+/* ===== Responsividade ===== */
 /* Desktops grandes */
 @media (min-width: 1200px) {
   .flip-calendar-wrapper,
@@ -175,5 +174,4 @@ body {
 
   .flip-calendar-row1, .flip-calendar-row2 { gap: 10px; }
   .flip-calendar-text { font-size: 30vw; }
-  .flip-calendar-text-month { font-size: 8vw; }
-}
+  .flip-calendar-text-month { fon
